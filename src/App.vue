@@ -1,17 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <header> 
+    <nav class="d-flex justify-content-center 
+    bglight border border-bottom 
+    border-dark p-3 w-100">
+    <RouterLink to="/ChatRoom1">ChatRoom1</RouterLink> | 
+    <RouterLink to="/ChatRoom2">ChatRoom2</RouterLink>
+    </nav> 
+  </header> 
+  <RouterView/>
+ <div id="app">
+  <MessageComponent :messages="messages" />
+  <ChatInput @message-sent="addMessage" />
+  <UserProfile />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MessageComponent from "@/components/MessageComponent.vue";
+import ChatInput from "@/components/ChatInput.vue";
+import UserProfile from '@/components/UserProfile';
+
+
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    MessageComponent,
+    ChatInput,
+    UserProfile,
+  },
+  data() {
+    return {
+      messages: [],
+    };
+  },
+  methods: {
+    addMessage({ username, message }) {
+      // Format the message with the username
+      const formattedMessage = `${username}: ${message}`;
+      this.messages.push(formattedMessage);
+  },
+},
+};
 </script>
 
 <style>
