@@ -11,4 +11,10 @@ module.exports = {
     config.resolve.alias.set('@', path.resolve(__dirname, 'src'));
   },
   transpileDependencies: true
-};
+}; 
+
+module.exports = {
+  devServer: {
+    disableHostCheck: true
+  }
+}
