@@ -13,3 +13,13 @@ module.exports = {
   transpileDependencies: true
 }; 
 
+module.exports = {
+  devServer: {
+    allowedHosts: [
+      'localhost',
+      'example.com',
+      '192.168.1.1',
+    ],
+  },
+};
+
